@@ -67,8 +67,9 @@ int main(int argc, char **argv)
             // TODO: implement correct mandelbrot(???) function
             // int color_val = mandelbrot(???);
             int n = mandelbrot(c, max_iter, max_abs);               // compute iteration count
-            int color_val = static_cast<int>(255.0 * n / max_iter); // map to grayscale
-
+            int color_val = static_cast<int>(255.0 * n / max_iter); // map to grayscale // static_cast because we get a double and need to map to int (0-255)
+            // if you set R=G=B you get a shade of grey.
+            // for small n (quick divergence) we go close to white and vice versa
             image[4 * width * y + 4 * x + 0] = color_val; // R
             image[4 * width * y + 4 * x + 1] = color_val; // G
             image[4 * width * y + 4 * x + 2] = color_val; // B
